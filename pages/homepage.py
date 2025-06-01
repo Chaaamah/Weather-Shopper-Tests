@@ -1,10 +1,10 @@
-from .base_page import BasePage
+from .base_page import BasePage  # Ajout de l'import manquant
 from selenium.webdriver.common.by import By
 
-class HomePage(BasePage):
+class HomePage(BasePage):  # BasePage est maintenant importé
     TEMPERATURE = (By.ID, "temperature")
-    MOISTURIZERS_BTN = (By.XPATH, "//button[contains(.,'Moisturizers')]")
-    SUNSCREENS_BTN = (By.XPATH, "//button[contains(.,'Sunscreens')]")
+    MOISTURIZERS_BTN = (By.XPATH, "//button[contains(.,'Buy moisturizers')]")  # Texte corrigé
+    SUNSCREENS_BTN = (By.XPATH, "//button[contains(.,'Buy sunscreens')]")  # Texte corrigé
     
     def get_temperature(self):
         temp_text = self.get_text(self.TEMPERATURE)

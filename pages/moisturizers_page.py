@@ -14,7 +14,9 @@ class MoisturizersPage(BasePage):
         for product in products:
             text = product.text
             if keyword.lower() in text.lower():
-                price = int(''.join(filter(str.isdigit, text.splitlines()[-1])))
+                # Correction: utiliser l'avant-dernière ligne pour le prix
+                price_text = text.splitlines()[-2]  # Ligne modifiée
+                price = int(''.join(filter(str.isdigit, price_text)))
                 add_btn = product.find_element(*self.ADD_BTN)
                 matching_products.append((price, add_btn))
         

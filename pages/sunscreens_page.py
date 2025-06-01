@@ -13,8 +13,9 @@ class SunscreensPage(BasePage):
         
         for product in products:
             text = product.text
-            if keyword.lower() in text.lower():
-                price_text = text.splitlines()[-1]
+            # Recherche plus flexible
+            if any(kw in text.lower() for kw in keyword.split(',')):
+                price_text = text.splitlines()[-2]
                 price = int(''.join(filter(str.isdigit, price_text)))
                 add_btn = product.find_element(*self.ADD_BTN)
                 matching_products.append((price, add_btn))
